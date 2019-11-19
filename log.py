@@ -1,13 +1,20 @@
 import sys
 
+def warn(*args):
+  _log("LOG", args)
+
+def err(*args):
+  _log("ERR", args)
+
+def log(*args):
+  _log("LOG", args)
+
+def fail(*args):
+  err(args)
+  sys.exit(1)
+
 def _to_str(items):
   return " ".join(map(str, items))
 
-def warn(*args):
-  sys.stdout.write("WRN: %s\n" % (_to_str(args)))
-
-def err(*args):
-  sys.stdout.write("ERR: %s\n" % (_to_str(args)))
-
-def log(*args):
-  sys.stdout.write("LOG: %s\n" % (_to_str(args)))
+def _log(level, args):
+   sys.stdout.write("%s: %s\n" % (level, _to_str(args)))

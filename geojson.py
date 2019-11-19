@@ -20,7 +20,7 @@ def strip_properties(geojson, keep):
 
 def convert_properties(geojson, convert_dct):
   for feature in geojson:
-    for name,converter in convert_dct:
+    for name,converter in convert_dct.items():
       if name in feature.properties:
         feature.properties[name] = converter(feature.properties[name])
 

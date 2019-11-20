@@ -1,4 +1,5 @@
 import sys
+from datetime import datetime
 
 def warn(*args):
   _log("LOG", args)
@@ -17,4 +18,5 @@ def _to_str(items):
   return " ".join(map(str, items))
 
 def _log(level, args):
-   sys.stdout.write("%s: %s\n" % (level, _to_str(args)))
+  date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+  sys.stdout.write("%s %s: %s\n" % (level, date, _to_str(args)))

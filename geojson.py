@@ -21,7 +21,11 @@ def strip_properties(geojson, keep):
 def convert_properties(geojson, convert_dct):
   for feature in geojson:
     for name,converter in convert_dct.items():
+      if type(converter) == type(tuple()):
+        new_prop,converter = converter
+      else:
+        new_prop = name
       if name in feature.properties:
-        feature.properties[name] = converter(feature.properties[name])
+        feature.properties[new_prop] = converter(feature.properties[name])
 
 

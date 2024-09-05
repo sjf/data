@@ -11,7 +11,7 @@ def log(*args):
   _log("LOG", args)
 
 def fail(*args):
-  err(args)
+  _log("FATAL", args)
   sys.exit(1)
 
 def _to_str(items):
